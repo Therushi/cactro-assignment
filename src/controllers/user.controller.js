@@ -1,9 +1,9 @@
-const User = require("../models/user.model");
+const UserModel = require("../models/user.model");
 
 exports.createUser = async (req, res, next) => {
   try {
     const { email, password, userType, name, contactNo, age } = req.body;
-    const userInfo = await User.findOne({
+    const userInfo = await UserModel.findOne({
       email,
     });
     if (userInfo) {
@@ -13,7 +13,7 @@ exports.createUser = async (req, res, next) => {
       });
     }
 
-    const user = await User.create({
+    const user = await UserModel.create({
       email,
       password,
       userType,
@@ -23,7 +23,7 @@ exports.createUser = async (req, res, next) => {
     });
 
     res.status(201).json({
-      message: "User created successfully",
+      message: "UserModel created successfully",
       user,
     });
   } catch (error) {
@@ -33,7 +33,7 @@ exports.createUser = async (req, res, next) => {
 
 exports.getUsers = async (req, res, next) => {
   try {
-    const users = await User.find({});
+    const users = await UserModel.find({});
     res.status(200).json({
       message: "Users fetched sucessfully",
       data: users,

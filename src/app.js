@@ -6,6 +6,7 @@ const routes = require("./routes");
 const userRouter = require("./routes/user.router");
 const eventsRouter = require("./routes/events.routes");
 const bookingRouter = require("./routes/booking.routes");
+const authRouter = require("./routes/auth.router");
 const { errorHandler } = require("./middlewares/error.middleware");
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api", routes);
+app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/events", eventsRouter);
 app.use("/api/booking", bookingRouter);
