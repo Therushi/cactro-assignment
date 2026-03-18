@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const routes = require("./routes");
 const userRouter = require("./routes/user.router");
 const eventsRouter = require("./routes/events.routes");
 const bookingRouter = require("./routes/booking.routes");
@@ -19,7 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use("/api", routes);
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/events", eventsRouter);
